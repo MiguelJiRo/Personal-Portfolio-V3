@@ -110,7 +110,7 @@ const Contact = () => {
               <h4 className="text-white font-semibold mb-4">Sígueme en</h4>
               <div className="flex gap-4">
                 <a
-                  href="https://github.com/migueljiroz"
+                  href="https://github.com/migueljiro"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 bg-gray-700 hover:bg-blue-500 rounded-lg flex items-center justify-center transition-colors"

@@ -10,7 +10,7 @@ const Projects = () => {
       image: animeLensImg,
       technologies: ["React", "TypeScript", "Vite", "Tailwind CSS", "Axios"],
       github: "https://github.com/MiguelJiRo/Anime-Lens",
-      demo: "https://github.com/MiguelJiRo/Anime-Lens"
+      demo: "https://anime-lens.vercel.app"
     },
     {
       title: "Pixel Defense",
@@ -18,7 +18,7 @@ const Projects = () => {
       image: pixelDefenseImg,
       technologies: ["React", "Canvas 2D", "Vite", "JavaScript"],
       github: "https://github.com/MiguelJiRo/Pixel-Defense",
-      demo: "https://github.com/MiguelJiRo/Pixel-Defense"
+      demo: "https://pixel-defense.vercel.app"
     },
     {
       title: "Tech-dle",
