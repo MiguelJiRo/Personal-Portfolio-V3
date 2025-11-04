@@ -57,6 +57,16 @@ const Home = () => {
                 </svg>
               </a>
             </div>
+
+            {/* Quote */}
+            <div className="mt-8 p-4 border-l-4 border-blue-400 bg-gray-800/30 rounded-r-lg">
+              <p className="text-gray-400 italic text-sm md:text-base">
+                "The most dangerous phrase in the language is 'We've always done it this way'"
+              </p>
+              <p className="text-gray-500 text-xs md:text-sm mt-2">
+                — Grace Hopper
+              </p>
+            </div>
           </div>
 
           {/* Profile Image */}
