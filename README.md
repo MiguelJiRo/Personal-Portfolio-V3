@@ -1,4 +1,4 @@
-# Portfolio Personal - Miguel Jiroz
+# Portfolio Personal - Miguel Jiménez Rodríguez
 
 Portafolio personal moderno desarrollado con React, Vite y Tailwind CSS. Una página web de una sola página (single page) con scroll suave y diseño responsivo.
 

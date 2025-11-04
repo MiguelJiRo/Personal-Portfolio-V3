@@ -21,7 +21,7 @@ const Home = () => {
               Frontend Developer
             </p>
             <p className="text-lg text-gray-400 mb-8">
-              Especializado en crear interfaces modernas y experiencias de usuario excepcionales
+              Dando vida a ideas en forma de aplicaciones web
             </p>
 
             <div className="flex gap-4 justify-center md:justify-start">
@@ -65,7 +65,7 @@ const Home = () => {
               <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-blue-400 shadow-2xl shadow-blue-500/50">
                 <img
                   src={profileImage}
-                  alt="Miguel Jiroz"
+                  alt="Miguel Jiménez Rodríguez"
                   className="w-full h-full object-cover"
                 />
               </div>

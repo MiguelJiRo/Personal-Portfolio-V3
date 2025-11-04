@@ -60,7 +60,7 @@ const Navbar = () => {
               </div>
               {/* Logo Text */}
               <div className="hidden sm:block">
-                <h1 className="text-lg font-bold text-white leading-none">Miguel Jiroz</h1>
+                <h1 className="text-lg font-bold text-white leading-none">Miguel</h1>
                 <p className="text-xs text-blue-400 leading-none">Frontend Dev</p>
               </div>
             </div>
