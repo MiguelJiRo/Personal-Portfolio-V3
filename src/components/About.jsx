@@ -14,7 +14,7 @@ const About = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h3 className="text-2xl font-semibold text-white mb-4">
-              Más allá del código
+              Un poco sobre mí
             </h3>
             <p className="text-gray-300 mb-4 leading-relaxed">
               Soy desarrollador Frontend con experiencia en crear interfaces web modernas
