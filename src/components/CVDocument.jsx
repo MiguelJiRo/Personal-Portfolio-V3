@@ -231,6 +231,15 @@ const CVDocument = () => {
               <Text style={styles.sectionTitle}>Formación Complementaria</Text>
 
               <View style={styles.experienceItem}>
+                <Text style={styles.jobTitle}>Testing Frontend (20h)</Text>
+                <Text style={styles.company}>Icono Training Consulting</Text>
+                <Text style={styles.date}>Noviembre 2025</Text>
+                <Text style={styles.description}>
+                  Pruebas de unidad e integración en Javascript, pruebas de aceptación, testing library y pruebas de accesibilidad
+                </Text>
+              </View>
+
+              <View style={styles.experienceItem}>
                 <Text style={styles.jobTitle}>Linux LPIC-1: Linux Administrator (40h)</Text>
                 <Text style={styles.company}>CAS training</Text>
                 <Text style={styles.date}>Octubre 2025</Text>
