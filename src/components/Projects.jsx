@@ -1,6 +1,7 @@
 import animeLensImg from '../assets/anime-lens.jpg';
 import pixelDefenseImg from '../assets/pixel-defense.jpg';
 import techdleImg from '../assets/tech+dle.jpg';
+import SectionHeader from './SectionHeader';
 
 const Projects = () => {
   const projects = [
@@ -33,41 +34,36 @@ const Projects = () => {
   return (
     <section id="projects" className="min-h-screen bg-gray-800 py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Mis <span className="text-blue-400">Proyectos</span>
-          </h2>
-          <div className="w-20 h-1 bg-blue-400 mx-auto mb-6"></div>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-            Una selección de proyectos en los que he trabajado, desde aplicaciones web
-            hasta recreaciones de videojuegos clásicos.
-          </p>
-        </div>
+        <SectionHeader number="02" slug="proyectos" title="Proyectos" />
+
+        <p className="text-gray-300 text-lg max-w-4xl mb-12">
+          Cosas que he construido fuera del trabajo. Algunas para aprender, otras por curiosidad.
+        </p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <div
               key={index}
-              className="bg-gray-900 rounded-lg overflow-hidden border border-gray-700 hover:border-blue-400 transition-all duration-300 hover:transform hover:scale-105"
+              className="bg-gray-900 rounded-lg overflow-hidden border border-gray-700 hover:border-blue-400/60 transition-colors"
             >
               <div className="relative overflow-hidden h-48">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                  className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
               </div>
 
               <div className="p-6">
                 <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-                <p className="text-gray-300 mb-4 text-sm">{project.description}</p>
+                <p className="text-gray-300 mb-4 text-sm leading-relaxed">{project.description}</p>
 
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-medium rounded-full"
+                      className="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs font-medium rounded-full border border-blue-400/20"
                     >
                       {tech}
                     </span>

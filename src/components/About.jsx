@@ -1,39 +1,47 @@
 import CVDownloadButton from './CVDownloadButton';
+import SectionHeader from './SectionHeader';
 
 const About = () => {
+  const highlights = [
+    {
+      number: '01',
+      title: 'Frontend moderno',
+      description: 'Angular, React y TypeScript todos los días. Componentes reutilizables, accesibles y pensando en el rendimiento.',
+    },
+    {
+      number: '02',
+      title: 'Testing riguroso',
+      description: 'Me tomo en serio las pruebas. Jest, Angular Testing Library y TDD cuando el código lo pide.',
+    },
+    {
+      number: '03',
+      title: 'Visión full stack',
+      description: 'Bajo al backend en Java y Spring Boot cuando la tarea lo requiere. Me gusta entender la foto completa.',
+    },
+  ];
+
   return (
     <section id="about" className="min-h-screen flex items-center bg-gray-900 py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Sobre <span className="text-blue-400">Mí</span>
-          </h2>
-          <div className="w-20 h-1 bg-blue-400 mx-auto"></div>
-        </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <SectionHeader number="01" slug="sobre-mí" title="Sobre mí" />
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-12 items-start">
           <div>
-            <h3 className="text-2xl font-semibold text-white mb-4">
-              Un poco sobre mí
-            </h3>
             <p className="text-gray-300 mb-4 leading-relaxed">
-              Soy desarrollador Frontend con experiencia en crear interfaces web modernas
-              y funcionales. Me gusta transformar ideas en aplicaciones reales que funcionen bien
-              y se vean geniales.
+              Soy desarrollador Frontend en Indra desde 2021. Trabajo en un sistema de mando y
+              control europeo — un proyecto grande, exigente y con equipos de varios países
+              colaborando en el mismo código.
             </p>
             <p className="text-gray-300 mb-4 leading-relaxed">
-              Tengo experiencia trabajando con Angular y React en proyectos reales, y también
-              he tocado bastante backend con Java y Spring. Me gusta tener una visión completa
-              de cómo funcionan las cosas, desde el frontend hasta la base de datos. Trabajo con
-              metodologías ágiles y me tomo en serio el testing porque, seamos honestos, nadie
-              quiere bugs en producción.
+              En el día a día me muevo con Angular y React, y también he tocado bastante backend
+              con Java y Spring. Me gusta entender cómo funcionan las cosas de principio a fin,
+              desde el frontend hasta la base de datos. Trabajo con metodologías ágiles y me tomo
+              en serio el testing porque, seamos honestos, nadie quiere bugs en producción.
             </p>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Cuando no estoy programando, suelo estar cacharreando con nuevas tecnologías
-              o haciendo proyectos personales para aprender cosas nuevas. Uno de mis hobbies
-              es el desarrollo de videojuegos, aunque todavía me queda bastante por mejorar
-              en ese tema. Me encanta ver cómo evoluciona el mundo del desarrollo web y
-              explorar nuevas áreas.
+              Cuando no estoy programando, suelo estar cacharreando con proyectos personales para
+              aprender cosas nuevas. Uno de mis hobbies es el desarrollo de videojuegos, aunque
+              todavía me queda bastante por mejorar en ese tema.
             </p>
 
             <div className="flex gap-4">
@@ -52,58 +60,17 @@ const About = () => {
             </div>
           </div>
 
-          <div className="space-y-6">
-            <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-blue-400 transition-colors">
-              <div className="flex items-center mb-3">
-                <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mr-4">
-                  <span className="text-2xl">💻</span>
-                </div>
-                <h4 className="text-xl font-semibold text-white">Desarrollo Frontend</h4>
+          <div className="space-y-5">
+            {highlights.map((item) => (
+              <div
+                key={item.number}
+                className="bg-gray-800/60 p-6 rounded-lg border border-gray-700 hover:border-blue-400/60 transition-colors"
+              >
+                <p className="font-mono text-amber-400 text-sm mb-2">{item.number}</p>
+                <h3 className="text-xl font-semibold text-white mb-2">{item.title}</h3>
+                <p className="text-gray-300 leading-relaxed">{item.description}</p>
               </div>
-              <p className="text-gray-300">
-                Experiencia con React, Angular, TypeScript y CSS moderno para crear
-                interfaces web interactivas y con buen rendimiento.
-              </p>
-            </div>
-
-            <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-blue-400 transition-colors">
-              <div className="flex items-center mb-3">
-                <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mr-4">
-                  <span className="text-2xl">🎨</span>
-                </div>
-                <h4 className="text-xl font-semibold text-white">UI/UX Design</h4>
-              </div>
-              <p className="text-gray-300">
-                Me preocupo por crear interfaces que sean fáciles de usar y que
-                tengan buena pinta. Al final, la experiencia del usuario es lo que cuenta.
-              </p>
-            </div>
-
-            <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-blue-400 transition-colors">
-              <div className="flex items-center mb-3">
-                <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mr-4">
-                  <span className="text-2xl">⚡</span>
-                </div>
-                <h4 className="text-xl font-semibold text-white">Optimización</h4>
-              </div>
-              <p className="text-gray-300">
-                Me gusta que las aplicaciones funcionen rápido y sin problemas. Optimizar
-                el rendimiento es parte importante del trabajo.
-              </p>
-            </div>
-
-            <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-blue-400 transition-colors">
-              <div className="flex items-center mb-3">
-                <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mr-4">
-                  <span className="text-2xl">🚀</span>
-                </div>
-                <h4 className="text-xl font-semibold text-white">Trabajo en Equipo</h4>
-              </div>
-              <p className="text-gray-300">
-                Me adapto rápido, trabajo bien bajo presión y me comunico de forma clara.
-                La resiliencia y el aprendizaje continuo son clave en este trabajo.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </div>
