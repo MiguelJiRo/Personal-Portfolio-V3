@@ -1,106 +1,89 @@
-import animeLensImg from '../assets/anime-lens.jpg';
-import pixelDefenseImg from '../assets/pixel-defense.jpg';
-import techdleImg from '../assets/tech+dle.jpg';
+import { PROJECTS } from '../data/projects';
+import Picture from './Picture';
 import SectionHeader from './SectionHeader';
+import GithubIcon from './icons/GithubIcon';
+import ExternalLinkIcon from './icons/ExternalLinkIcon';
 
-const Projects = () => {
-  const projects = [
-    {
-      title: "Anime Lens",
-      description: "Aplicación web moderna para buscar y identificar animes a partir de imágenes o capturas de pantalla usando trace.moe y AniList API. Incluye drag & drop, preview de video y traducciones automáticas.",
-      image: animeLensImg,
-      technologies: ["React", "TypeScript", "Vite", "Tailwind CSS", "Axios"],
-      github: "https://github.com/MiguelJiRo/Anime-Lens",
-      demo: "https://anime-lens.vercel.app"
-    },
-    {
-      title: "Pixel Defense",
-      description: "Tower defense minimalista con estilo pixel/retro. Modo endless con paths aleatorios, 4 tipos de torres, eventos aleatorios y sistema de dificultad escalable desarrollado con Canvas.",
-      image: pixelDefenseImg,
-      technologies: ["React", "Canvas 2D", "Vite", "JavaScript"],
-      github: "https://github.com/MiguelJiRo/Pixel-Defense",
-      demo: "https://pixel-defense.vercel.app"
-    },
-    {
-      title: "Tech-dle",
-      description: "Juego diario de adivinanzas de tecnologías inspirado en Wordle. Incluye sistema de pistas con colores, tracking de progreso, soporte bilingüe español/inglés y resultados compartibles.",
-      image: techdleImg,
-      technologies: ["React", "Vite", "Tailwind CSS", "LocalStorage"],
-      github: "https://github.com/MiguelJiRo/Tech-dle",
-      demo: "https://tech-dle.vercel.app"
-    }
-  ];
+const FOCUS_RING = 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-800';
 
-  return (
-    <section id="projects" className="min-h-screen bg-gray-800 py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader number="02" slug="proyectos" title="Proyectos" />
+const Projects = () => (
+  <section id="projects" className="relative min-h-screen bg-gray-800 py-20 overflow-hidden">
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-0 bg-grid-lines opacity-30 [mask-image:radial-gradient(ellipse_at_top,black_15%,transparent_60%)]"
+    />
+    <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeader sectionId="projects" />
 
-        <p className="text-gray-300 text-lg max-w-4xl mb-12">
-          Cosas que he construido fuera del trabajo. Algunas para aprender, otras por curiosidad.
-        </p>
+      <p className="text-gray-300 text-lg max-w-4xl mb-12 text-pretty">
+        Cosas que he construido fuera del trabajo. Algunas para aprender, otras por curiosidad.
+      </p>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="bg-gray-900 rounded-lg overflow-hidden border border-gray-700 hover:border-blue-400/60 transition-colors"
-            >
-              <div className="relative overflow-hidden h-48">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
-              </div>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        {PROJECTS.map((project, index) => (
+          <article
+            key={project.title}
+            className="group relative bg-gray-900/80 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700/80 hover:border-blue-400/60 transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-500/10 flex flex-col"
+          >
+            <span className="absolute top-4 right-4 z-10 font-mono text-xs text-amber-400/80 tracking-wider">
+              0{index + 1}
+            </span>
+            <div className="relative overflow-hidden h-48 bg-gray-950">
+              <Picture
+                source={project.image}
+                alt={`Captura de ${project.title}`}
+                sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
+                loading="lazy"
+                imgClassName="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent" />
+            </div>
 
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-                <p className="text-gray-300 mb-4 text-sm leading-relaxed">{project.description}</p>
+            <div className="p-6 flex flex-col flex-1">
+              <h3 className="text-xl font-bold text-white mb-2 text-balance tracking-tight">
+                {project.title}
+              </h3>
+              <p className="text-gray-300 mb-4 text-sm leading-relaxed text-pretty">{project.description}</p>
 
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs font-medium rounded-full border border-blue-400/20"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex gap-4">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
+              <ul className="flex flex-wrap gap-2 mb-4">
+                {project.technologies.map((tech) => (
+                  <li
+                    key={tech}
+                    className="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs font-medium rounded-full border border-blue-400/20"
                   >
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
-                    </svg>
-                    <span className="text-sm">Code</span>
-                  </a>
-                  <a
-                    href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
-                  >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                    <span className="text-sm">Demo</span>
-                  </a>
-                </div>
+                    {tech}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="flex gap-4 mt-auto">
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Ver código de ${project.title} en GitHub`}
+                  className={`flex items-center gap-2 text-gray-300 hover:text-white transition-colors rounded ${FOCUS_RING}`}
+                >
+                  <GithubIcon className="w-5 h-5" />
+                  <span className="text-sm">Code</span>
+                </a>
+                <a
+                  href={project.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Abrir demo de ${project.title}`}
+                  className={`flex items-center gap-2 text-gray-300 hover:text-white transition-colors rounded ${FOCUS_RING}`}
+                >
+                  <ExternalLinkIcon className="w-5 h-5" />
+                  <span className="text-sm">Demo</span>
+                </a>
               </div>
             </div>
-          ))}
-        </div>
+          </article>
+        ))}
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default Projects;

@@ -1,6 +1,16 @@
-import { Document, Page, Text, View, StyleSheet, Link } from '@react-pdf/renderer';
+import { Document, Link, Page, StyleSheet, Text, View } from '@react-pdf/renderer';
+import { PROFILE } from '../data/profile';
+import {
+  CV_COMPLEMENTARY,
+  CV_EDUCATION,
+  CV_EXPERIENCE,
+  CV_LANGUAGES,
+  CV_METHODOLOGIES,
+  CV_SOFT_SKILLS,
+  CV_SUMMARY,
+} from '../data/cv';
+import { SKILL_CATEGORIES } from '../data/skills';
 
-// Estilos optimizados para ATS: una sola columna, texto plano, tamaños legibles.
 const styles = StyleSheet.create({
   page: {
     paddingTop: 32,
@@ -99,171 +109,121 @@ const styles = StyleSheet.create({
   },
 });
 
+const renderBullets = (bullets) =>
+  bullets.map((line, i) => (i === bullets.length - 1 ? `• ${line}` : `• ${line}\n`)).join('');
+
+const TimelineEntry = ({ role, meta, description, bullets }) => (
+  <View style={styles.item}>
+    <Text style={styles.roleTitle}>{role}</Text>
+    <Text style={styles.roleMeta}>{meta}</Text>
+    {description && <Text style={styles.description}>{description}</Text>}
+    {bullets && <Text style={styles.bullets}>{renderBullets(bullets)}</Text>}
+  </View>
+);
+
 const CVDocument = () => (
   <Document
-    title="CV Miguel Jiménez Rodríguez - Frontend Developer"
-    author="Miguel Jiménez Rodríguez"
-    subject="Curriculum Vitae - Frontend Developer"
+    title={`CV ${PROFILE.name} - ${PROFILE.role}`}
+    author={PROFILE.name}
+    subject={`Curriculum Vitae - ${PROFILE.role}`}
     keywords="Frontend Developer, Angular, React, TypeScript, JavaScript, Java, Spring Boot, Fullstack, TDD, Scrum"
   >
     <Page size="A4" style={styles.page}>
-      {/* Cabecera */}
       <View style={styles.header}>
-        <Text style={styles.name}>Miguel Jiménez Rodríguez</Text>
-        <Text style={styles.title}>Frontend Developer</Text>
+        <Text style={styles.name}>{PROFILE.name}</Text>
+        <Text style={styles.title}>{PROFILE.role}</Text>
         <View style={styles.contactRow}>
           <Text style={styles.contactItem}>
             <Text style={styles.contactLabel}>Email: </Text>
-            migueljiroz@gmail.com
+            {PROFILE.email}
           </Text>
           <Text style={styles.contactItem}>
             <Text style={styles.contactLabel}>Ubicación: </Text>
-            Aranjuez, España
+            {PROFILE.location}
           </Text>
           <Text style={styles.contactItem}>
             <Text style={styles.contactLabel}>GitHub: </Text>
-            <Link src="https://github.com/migueljiro" style={styles.link}>
-              github.com/migueljiro
+            <Link src={PROFILE.github.url} style={styles.link}>
+              {PROFILE.github.display}
             </Link>
           </Text>
           <Text style={styles.contactItem}>
             <Text style={styles.contactLabel}>LinkedIn: </Text>
-            <Link src="https://linkedin.com/in/migueljiroz" style={styles.link}>
-              linkedin.com/in/migueljiroz
+            <Link src={PROFILE.linkedin.url} style={styles.link}>
+              {PROFILE.linkedin.display}
             </Link>
           </Text>
         </View>
       </View>
 
-      {/* Resumen */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>RESUMEN PROFESIONAL</Text>
-        <Text style={styles.paragraph}>
-          Frontend Developer con más de 5 años de experiencia desarrollando sistemas críticos para el sector defensa, principalmente con Angular, React y TypeScript. Me siento cómodo bajando al backend con Java y Spring Boot cuando hace falta, y disfruto los equipos donde el código se testea, se revisa y se discute. Me interesan los proyectos con impacto real, donde entender al usuario final forma parte del trabajo tanto como escribir código.
-        </Text>
+        <Text style={styles.paragraph}>{CV_SUMMARY}</Text>
       </View>
 
-      {/* Experiencia */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>EXPERIENCIA PROFESIONAL</Text>
-
-        <View style={styles.item}>
-          <Text style={styles.roleTitle}>Frontend / Fullstack Developer</Text>
-          <Text style={styles.roleMeta}>Indra  |  Aranjuez, España  |  Enero 2022 - Presente</Text>
-          <Text style={styles.description}>
-            Desarrollo del Sistema de Mando y Control Estratégico Europeo (MPCC) para el Servicio Europeo de Acción Exterior (SEAE), la plataforma con la que la Unión Europea coordina sus misiones internacionales.
-          </Text>
-          <Text style={styles.bullets}>
-            • Construyo componentes en Angular y TypeScript cuidando accesibilidad, rendimiento y diseño responsive.{'\n'}
-            • Mantengo la cobertura de pruebas con Jest y Angular Testing Library siguiendo TDD.{'\n'}
-            • Apoyo al backend en Java, Spring Boot y Docker cuando la tarea lo requiere.{'\n'}
-            • Uso Git para el control de versiones, pull requests para la revisión de código y Jira para el seguimiento de tareas.{'\n'}
-            • Me coordino con el equipo en dailies y weeklies.
-          </Text>
-        </View>
-
-        <View style={styles.item}>
-          <Text style={styles.roleTitle}>Backend Developer</Text>
-          <Text style={styles.roleMeta}>Indra  |  Aranjuez, España  |  Febrero 2021 - Enero 2022</Text>
-          <Text style={styles.description}>
-            Sistema de planificación de misiones para los helicópteros del Ejército de Tierra, trabajando íntegramente en el backend.
-          </Text>
-          <Text style={styles.bullets}>
-            • Desarrollo de servicios REST en Java y Spring Boot sobre PostgreSQL y Oracle.{'\n'}
-            • Pruebas unitarias y de integración con JUnit y Mockito.{'\n'}
-            • Build del proyecto con Maven y trabajo diario con Git y Jira en entorno ágil.
-          </Text>
-        </View>
+        {CV_EXPERIENCE.map((entry) => (
+          <TimelineEntry
+            key={`${entry.company}-${entry.period}`}
+            role={entry.role}
+            meta={`${entry.company}  |  ${entry.location}  |  ${entry.period}`}
+            description={entry.description}
+            bullets={entry.bullets}
+          />
+        ))}
       </View>
 
-      {/* Habilidades Técnicas */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>HABILIDADES TÉCNICAS</Text>
-        <Text style={styles.skillLine}>
-          <Text style={styles.skillCategory}>Frontend: </Text>
-          Angular, React, TypeScript, JavaScript (ES6+), HTML5, CSS3, SASS, Tailwind CSS, Vue, Next.js, RxJS, Responsive Design
-        </Text>
-        <Text style={styles.skillLine}>
-          <Text style={styles.skillCategory}>Backend y BBDD: </Text>
-          Java, Spring Boot, Node.js, Express, MongoDB, Firebase, PostgreSQL, Oracle
-        </Text>
-        <Text style={styles.skillLine}>
-          <Text style={styles.skillCategory}>Testing: </Text>
-          Jest, Angular Testing Library, JUnit, Mockito, Cypress, Playwright, TDD
-        </Text>
-        <Text style={styles.skillLine}>
-          <Text style={styles.skillCategory}>Herramientas: </Text>
-          Git, Docker, Webpack, Vite, Jira, VSCode, IntelliJ IDEA
-        </Text>
+        {SKILL_CATEGORIES.map((category) => (
+          <Text key={category.id} style={styles.skillLine}>
+            <Text style={styles.skillCategory}>{category.cvLabel}: </Text>
+            {category.skills.join(', ')}
+          </Text>
+        ))}
         <Text style={styles.skillLine}>
           <Text style={styles.skillCategory}>Metodologías: </Text>
-          Scrum, Agile, Code Review, Pair Programming, TDD
+          {CV_METHODOLOGIES.join(', ')}
         </Text>
       </View>
 
-      {/* Formación Académica */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>FORMACIÓN ACADÉMICA</Text>
-
-        <View style={styles.item}>
-          <Text style={styles.roleTitle}>Máster Front-End Lemoncode XIII</Text>
-          <Text style={styles.roleMeta}>Lemoncode  |  Abril 2022 - Noviembre 2023</Text>
-          <Text style={styles.description}>
-            Formación intensiva en el ecosistema frontend moderno: React, Angular, Vue, Next.js, TypeScript, testing con Jest, Cypress y Playwright, bundlers (Webpack, Vite), PWA, React Native, GraphQL y despliegue en AWS y Azure.
-          </Text>
-        </View>
-
-        <View style={styles.item}>
-          <Text style={styles.roleTitle}>Graduado en Ingeniería Informática</Text>
-          <Text style={styles.roleMeta}>Universidad Complutense de Madrid  |  2014 - 2020</Text>
-          <Text style={styles.description}>
-            Fundamentos de la ingeniería del software: Java, C, C++ y Python, estructuras de datos y algoritmos, bases de datos SQL, patrones de diseño, sistemas operativos, redes y desarrollo web.
-          </Text>
-        </View>
+        {CV_EDUCATION.map((entry) => (
+          <TimelineEntry
+            key={`${entry.institution}-${entry.period}`}
+            role={entry.role}
+            meta={`${entry.institution}  |  ${entry.period}`}
+            description={entry.description}
+          />
+        ))}
       </View>
 
-      {/* Formación Complementaria */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>FORMACIÓN COMPLEMENTARIA</Text>
-
-        <View style={styles.item}>
-          <Text style={styles.roleTitle}>Testing Frontend (20h)</Text>
-          <Text style={styles.roleMeta}>Icono Training Consulting  |  Noviembre 2025</Text>
-          <Text style={styles.description}>
-            Pruebas unitarias y de integración en JavaScript, pruebas de aceptación, Testing Library y pruebas de accesibilidad.
-          </Text>
-        </View>
-
-        <View style={styles.item}>
-          <Text style={styles.roleTitle}>Linux LPIC-1: Linux Administrator (40h)</Text>
-          <Text style={styles.roleMeta}>CAS Training  |  Octubre 2025</Text>
-          <Text style={styles.description}>
-            Administración de sistemas Linux, shell scripting, gestión de red y seguridad básica.
-          </Text>
-        </View>
-
-        <View style={styles.item}>
-          <Text style={styles.roleTitle}>Spring Boot (24h)</Text>
-          <Text style={styles.roleMeta}>PUE  |  Junio 2023</Text>
-          <Text style={styles.description}>
-            Desarrollo de aplicaciones, acceso a datos, seguridad y despliegue con Spring Boot.
-          </Text>
-        </View>
+        {CV_COMPLEMENTARY.map((entry) => (
+          <TimelineEntry
+            key={`${entry.institution}-${entry.period}`}
+            role={entry.role}
+            meta={`${entry.institution}  |  ${entry.period}`}
+            description={entry.description}
+          />
+        ))}
       </View>
 
-      {/* Idiomas */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>IDIOMAS</Text>
-        <Text style={styles.skillLine}>Español - Nativo</Text>
-        <Text style={styles.skillLine}>Inglés - Profesional</Text>
+        {CV_LANGUAGES.map(({ language, level }) => (
+          <Text key={language} style={styles.skillLine}>
+            {language} - {level}
+          </Text>
+        ))}
       </View>
 
-      {/* Habilidades Personales */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>HABILIDADES PERSONALES</Text>
-        <Text style={styles.description}>
-          Me desenvuelvo bien en equipos diversos e internacionales y mantengo la calma cuando las fechas aprietan. Disfruto los entornos donde la comunicación es clara y directa, y procuro ser una persona con la que se pueda contar. Me gusta aprender tecnologías nuevas cuando el proyecto las pide y compartir lo aprendido con el equipo.
-        </Text>
+        <Text style={styles.description}>{CV_SOFT_SKILLS}</Text>
       </View>
     </Page>
   </Document>

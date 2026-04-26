@@ -1,12 +1,17 @@
 import { useState } from 'react';
 
+const FILENAME = 'CV_Miguel_Jimenez_Rodriguez.pdf';
+
 const CVDownloadButton = ({ className, children }) => {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleDownload = async () => {
     if (loading) return;
     setLoading(true);
+    setError(null);
 
+    let url;
     try {
       const [{ pdf }, { default: CVDocument }] = await Promise.all([
         import('@react-pdf/renderer'),
@@ -14,33 +19,44 @@ const CVDownloadButton = ({ className, children }) => {
       ]);
 
       const blob = await pdf(<CVDocument />).toBlob();
-      const pdfBlob = new Blob([blob], { type: 'application/pdf' });
+      url = URL.createObjectURL(blob);
 
-      const url = URL.createObjectURL(pdfBlob);
       const link = document.createElement('a');
       link.href = url;
-      link.download = 'CV_Miguel_Jimenez_Rodriguez.pdf';
-      link.type = 'application/pdf';
-
+      link.download = FILENAME;
+      link.rel = 'noopener';
       document.body.appendChild(link);
       link.click();
-
-      setTimeout(() => {
-        document.body.removeChild(link);
-        URL.revokeObjectURL(url);
-      }, 100);
-    } catch (error) {
-      console.error('Error al generar el PDF:', error);
-      alert('Hubo un error al generar el CV. Por favor, intenta nuevamente.');
+      link.remove();
+    } catch (err) {
+      console.error('Error al generar el PDF:', err);
+      setError('No pudimos generar el CV. Inténtalo de nuevo en unos segundos.');
     } finally {
+      if (url) URL.revokeObjectURL(url);
       setLoading(false);
     }
   };
 
   return (
-    <button onClick={handleDownload} className={className} disabled={loading}>
-      {loading ? 'Generando CV...' : (children || 'Descargar CV')}
-    </button>
+    <span className="inline-flex flex-col gap-2">
+      <button
+        type="button"
+        onClick={handleDownload}
+        className={className}
+        disabled={loading}
+        aria-busy={loading}
+      >
+        {loading ? 'Generando CV…' : children || 'Descargar CV'}
+      </button>
+      <span role="status" aria-live="polite" className="sr-only">
+        {loading ? 'Generando CV, espera unos segundos.' : ''}
+      </span>
+      {error && (
+        <span role="alert" className="text-sm text-red-400">
+          {error}
+        </span>
+      )}
+    </span>
   );
 };
 
