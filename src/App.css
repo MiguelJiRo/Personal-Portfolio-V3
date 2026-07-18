@@ -8,8 +8,9 @@ html {
   padding: 0;
 }
 
-section[id] {
-  scroll-margin-top: 4.5rem;
+section[id],
+article[id] {
+  scroll-margin-top: 4rem;
 }
 
 @media (prefers-reduced-motion: reduce) {

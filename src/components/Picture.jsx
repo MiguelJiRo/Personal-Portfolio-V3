@@ -1,7 +1,6 @@
 const Picture = ({ source, alt, className, imgClassName, sizes, fetchPriority, ...rest }) => {
   const imgProps = {
     alt,
-    sizes,
     ...(fetchPriority && { fetchpriority: fetchPriority }),
     ...rest,
   };
@@ -17,6 +16,7 @@ const Picture = ({ source, alt, className, imgClassName, sizes, fetchPriority, .
   }
 
   const { sources, img } = source;
+  const jpegSrcSet = sources.jpeg ?? sources.jpg;
 
   return (
     <picture className={className}>
@@ -24,7 +24,7 @@ const Picture = ({ source, alt, className, imgClassName, sizes, fetchPriority, .
       {sources.webp && <source type="image/webp" srcSet={sources.webp} sizes={sizes} />}
       <img
         src={img.src}
-        srcSet={img.srcset}
+        {...(jpegSrcSet && { srcSet: jpegSrcSet, sizes })}
         width={img.w}
         height={img.h}
         className={imgClassName}

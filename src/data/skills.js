@@ -1,3 +1,6 @@
+// Solo para la web (no entra en el CV): lo que toco fuera de horario.
+export const OFF_DUTY_SKILLS = ['Godot', 'GDScript', 'Canvas 2D', 'Pixel art'];
+
 export const SKILL_CATEGORIES = [
   {
     id: 'frontend',

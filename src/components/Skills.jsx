@@ -1,47 +1,89 @@
-import { SKILL_CATEGORIES } from '../data/skills';
+import { CV_METHODOLOGIES } from '../data/cv';
+import { OFF_DUTY_SKILLS, SKILL_CATEGORIES } from '../data/skills';
+import Corners from './ui/Corners';
 import SectionHeader from './SectionHeader';
 
+const SYS_LETTERS = ['A', 'B', 'C', 'D'];
+
 const Skills = () => (
-  <section id="skills" className="relative min-h-screen bg-mesh-soft py-20 overflow-hidden">
-    <div
-      aria-hidden="true"
-      className="pointer-events-none absolute inset-0 bg-grid-lines opacity-40 [mask-image:radial-gradient(ellipse_at_bottom_left,black_15%,transparent_60%)]"
-    />
-    <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section id="skills" className="relative py-24 md:py-32">
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <SectionHeader sectionId="skills" />
 
-      <p className="text-gray-300 text-lg max-w-4xl mb-12 text-pretty">
-        Lo que uso de forma regular. Algunas cosas cada día, otras solo cuando el proyecto lo pide.
+      <p className="mb-14 max-w-3xl text-pretty text-lg text-niebla">
+        Esto es lo que uso: unas cosas a diario en el trabajo, otras cuando un proyecto personal
+        me da la excusa de probarlas.
       </p>
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid items-start gap-6 md:grid-cols-2">
         {SKILL_CATEGORIES.map((category, index) => (
           <article
             key={category.id}
-            className="group bg-gray-800/40 backdrop-blur-sm rounded-xl p-6 border border-gray-700/80 hover:border-blue-400/60 transition-all hover:-translate-y-0.5"
+            className="group relative border border-bisel bg-panel p-6 transition-colors hover:border-fosforo/40"
           >
-            <div className="flex items-baseline gap-3 mb-5">
-              <span className="font-mono text-amber-400 text-sm tracking-wider">
-                /{String(index + 1).padStart(2, '0')}
+            <Corners className="text-fosforo/40 group-hover:text-fosforo" />
+            <h3 className="mb-4 flex items-start justify-between gap-3 border-b border-bisel pb-3 font-mono text-[10px] font-normal uppercase tracking-label sm:text-[11px]">
+              <span className="text-ambar">
+                SYS-{SYS_LETTERS[index]} — {category.title}
               </span>
-              <h3 className="text-xl font-semibold text-white tracking-tight">{category.title}</h3>
-              <span className="ml-auto text-xs text-gray-500 font-mono">
-                {category.skills.length} items
+              <span className="shrink-0 whitespace-nowrap text-[10px] text-niebla">
+                {category.skills.length} unidades
               </span>
-            </div>
+            </h3>
 
-            <ul className="flex flex-wrap gap-2">
-              {category.skills.map((skill) => (
+            <ul className="grid grid-cols-2 gap-x-6">
+              {category.skills.map((skill, skillIndex) => (
                 <li
                   key={skill}
-                  className="px-3 py-1.5 bg-gray-900/80 border border-gray-700 text-gray-300 text-sm rounded-md hover:border-blue-400/40 hover:text-white transition-colors"
+                  className="flex items-center gap-2.5 border-b border-bisel/40 py-1.5 transition-colors hover:bg-fosforo/5"
                 >
-                  {skill}
+                  <span aria-hidden="true" className="font-mono text-[9px] text-niebla/80">
+                    {String(skillIndex + 1).padStart(2, '0')}
+                  </span>
+                  <span aria-hidden="true" className="text-[8px] leading-none text-fosforo/50">
+                    ▮
+                  </span>
+                  <span className="text-[15px] font-medium text-hielo">{skill}</span>
                 </li>
               ))}
             </ul>
           </article>
         ))}
+      </div>
+
+      <div className="mt-8 flex flex-wrap items-center gap-2">
+        <p className="mr-2 font-mono text-[10px] uppercase tracking-label text-ambar">
+          Doctrina ▸
+        </p>
+        <ul className="flex flex-wrap gap-2" aria-label="Metodologías de trabajo">
+          {CV_METHODOLOGIES.map((method) => (
+            <li
+              key={method}
+              className="rounded-sm border border-bisel px-3 py-1.5 font-mono text-[11px] uppercase tracking-instrument text-niebla"
+            >
+              {method}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="mt-4 flex flex-wrap items-center gap-2">
+        <p className="mr-2 font-mono text-[10px] uppercase tracking-label text-ambar">
+          Videojuegos ▸
+        </p>
+        <ul className="flex flex-wrap gap-2" aria-label="Tecnologías de videojuegos por afición">
+          {OFF_DUTY_SKILLS.map((skill) => (
+            <li
+              key={skill}
+              className="rounded-sm border border-fosforo/25 px-3 py-1.5 font-mono text-[11px] uppercase tracking-instrument text-niebla"
+            >
+              {skill}
+            </li>
+          ))}
+        </ul>
+        <p className="font-mono text-[10px] uppercase tracking-instrument text-niebla">
+          {'// por afición, fuera del trabajo'}
+        </p>
       </div>
     </div>
   </section>

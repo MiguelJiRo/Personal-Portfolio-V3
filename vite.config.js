@@ -4,13 +4,4 @@ import { imagetools } from 'vite-imagetools'
 
 export default defineConfig({
   plugins: [react(), imagetools()],
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          'react-pdf': ['@react-pdf/renderer'],
-        },
-      },
-    },
-  },
 })

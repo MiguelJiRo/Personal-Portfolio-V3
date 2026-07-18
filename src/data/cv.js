@@ -1,20 +1,22 @@
+export const CV_HEADLINE = 'Frontend Developer | Angular | React | TypeScript';
+
 export const CV_SUMMARY =
-  'Frontend Developer con más de 5 años de experiencia desarrollando sistemas críticos para el sector defensa, principalmente con Angular, React y TypeScript. Me siento cómodo bajando al backend con Java y Spring Boot cuando hace falta, y disfruto los equipos donde el código se testea, se revisa y se discute. Me interesan los proyectos con impacto real, donde entender al usuario final forma parte del trabajo tanto como escribir código.';
+  'Frontend Developer con más de 5 años de experiencia desarrollando sistemas críticos para el sector defensa, especializado en Angular, React y TypeScript. Perfil fullstack con experiencia en backend con Java y Spring Boot. Sólida cultura de calidad de código: TDD, pruebas unitarias y de integración con Jest y Testing Library, revisión de código (code review) y metodologías ágiles (Scrum). Enfocado en accesibilidad (a11y), rendimiento y diseño responsive, con interés en proyectos de impacto real donde entender al usuario final forma parte del trabajo.';
 
 export const CV_EXPERIENCE = [
   {
     role: 'Frontend / Fullstack Developer',
     company: 'Indra',
     location: 'Aranjuez, España',
-    period: 'Enero 2022 - Presente',
+    period: 'Enero 2022 - Actualidad',
     description:
       'Desarrollo del Sistema de Mando y Control Estratégico Europeo (MPCC) para el Servicio Europeo de Acción Exterior (SEAE), la plataforma con la que la Unión Europea coordina sus misiones internacionales.',
     bullets: [
-      'Construyo componentes en Angular y TypeScript cuidando accesibilidad, rendimiento y diseño responsive.',
-      'Mantengo la cobertura de pruebas con Jest y Angular Testing Library siguiendo TDD.',
-      'Apoyo al backend en Java, Spring Boot y Docker cuando la tarea lo requiere.',
-      'Uso Git para el control de versiones, pull requests para la revisión de código y Jira para el seguimiento de tareas.',
-      'Me coordino con el equipo en dailies y weeklies.',
+      'Desarrollo componentes de interfaz con Angular y TypeScript aplicando buenas prácticas de accesibilidad (a11y), rendimiento y diseño responsive.',
+      'Garantizo la calidad del código con pruebas unitarias y de integración (Jest, Angular Testing Library) siguiendo TDD (Test-Driven Development).',
+      'Desarrollo funcionalidades backend con Java, Spring Boot y Docker cuando la tarea lo requiere.',
+      'Aplico control de versiones con Git, revisión de código mediante pull requests (code review) y gestión de tareas con Jira.',
+      'Colaboro con un equipo internacional bajo metodología ágil Scrum, participando en las ceremonias del equipo (dailies y weeklies).',
     ],
   },
   {
@@ -23,11 +25,11 @@ export const CV_EXPERIENCE = [
     location: 'Aranjuez, España',
     period: 'Febrero 2021 - Enero 2022',
     description:
-      'Sistema de planificación de misiones para los helicópteros del Ejército de Tierra, trabajando íntegramente en el backend.',
+      'Desarrollo backend del sistema de planificación de misiones para los helicópteros del Ejército de Tierra.',
     bullets: [
-      'Desarrollo de servicios REST en Java y Spring Boot sobre PostgreSQL y Oracle.',
-      'Pruebas unitarias y de integración con JUnit y Mockito.',
-      'Build del proyecto con Maven y trabajo diario con Git y Jira en entorno ágil.',
+      'Diseño y desarrollo de servicios REST (APIs) con Java y Spring Boot sobre bases de datos PostgreSQL y Oracle.',
+      'Implementación de pruebas unitarias y de integración con JUnit y Mockito.',
+      'Gestión del build con Maven y trabajo diario con Git y Jira en un entorno ágil (Scrum).',
     ],
   },
 ];
@@ -41,7 +43,7 @@ export const CV_EDUCATION = [
       'Formación intensiva en el ecosistema frontend moderno: React, Angular, Vue, Next.js, TypeScript, testing con Jest, Cypress y Playwright, bundlers (Webpack, Vite), PWA, React Native, GraphQL y despliegue en AWS y Azure.',
   },
   {
-    role: 'Graduado en Ingeniería Informática',
+    role: 'Grado en Ingeniería Informática (Computer Science)',
     institution: 'Universidad Complutense de Madrid',
     period: '2014 - 2020',
     description:
@@ -75,10 +77,23 @@ export const CV_COMPLEMENTARY = [
 
 export const CV_LANGUAGES = [
   { language: 'Español', level: 'Nativo' },
-  { language: 'Inglés', level: 'Profesional' },
+  { language: 'Inglés', level: 'Profesional (uso diario en equipo internacional)' },
 ];
 
 export const CV_SOFT_SKILLS =
-  'Me desenvuelvo bien en equipos diversos e internacionales y mantengo la calma cuando las fechas aprietan. Disfruto los entornos donde la comunicación es clara y directa, y procuro ser una persona con la que se pueda contar. Me gusta aprender tecnologías nuevas cuando el proyecto las pide y compartir lo aprendido con el equipo.';
+  'Comunicación clara y trabajo en equipo en entornos internacionales. Gestión de plazos y calma bajo presión. Aprendizaje continuo: adopto nuevas tecnologías cuando el proyecto las pide y comparto lo aprendido con el equipo (mentoría).';
 
 export const CV_METHODOLOGIES = ['Scrum', 'Agile', 'Code Review', 'Pair Programming', 'TDD'];
+
+export const CV_SECTION_TITLES = {
+  summary: 'Resumen Profesional',
+  experience: 'Experiencia Profesional',
+  skills: 'Habilidades Técnicas',
+  education: 'Formación Académica',
+  certifications: 'Certificaciones y Cursos',
+  languages: 'Idiomas',
+  softSkills: 'Competencias Personales',
+};
+
+export const CV_PDF_KEYWORDS =
+  'Frontend Developer, Desarrollador Frontend, Fullstack Developer, Angular, React, TypeScript, JavaScript, HTML5, CSS3, RxJS, Next.js, Java, Spring Boot, REST API, PostgreSQL, Oracle, Jest, Testing Library, Cypress, Playwright, TDD, Testing, Accesibilidad, a11y, Responsive Design, Git, Docker, Scrum, Agile, Code Review, Aranjuez, Madrid, España';

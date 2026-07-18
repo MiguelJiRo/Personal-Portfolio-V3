@@ -1,85 +1,103 @@
 import { PROFILE } from '../data/profile';
-import GithubIcon from './icons/GithubIcon';
-import LinkedInIcon from './icons/LinkedInIcon';
-import MailIcon from './icons/MailIcon';
+import Radar from './Radar';
 
-const FOCUS_RING = 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900';
+const FOCUS_RING =
+  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fosforo focus-visible:ring-offset-2 focus-visible:ring-offset-hangar';
 
-const SOCIAL_LINKS = [
-  { href: PROFILE.github.url, label: 'GitHub', Icon: GithubIcon, external: true },
-  { href: PROFILE.linkedin.url, label: 'LinkedIn', Icon: LinkedInIcon, external: true },
-  { href: `mailto:${PROFILE.email}`, label: 'Enviar email', Icon: MailIcon, external: false },
+const READOUTS = [
+  { label: 'Rol', value: PROFILE.role },
+  { label: 'Empresa', value: 'Indra' },
+  { label: 'Base', value: PROFILE.location },
+];
+
+const CHANNELS = [
+  { href: PROFILE.github.url, label: 'GitHub', external: true },
+  { href: PROFILE.linkedin.url, label: 'LinkedIn', external: true },
+  { href: `mailto:${PROFILE.email}`, label: 'Email', external: false },
 ];
 
 const Home = () => (
-  <section
-    id="home"
-    className="relative min-h-screen flex items-center justify-center overflow-hidden bg-mesh-hero bg-noise"
-  >
-    <div
-      aria-hidden="true"
-      className="pointer-events-none absolute inset-0 bg-grid-lines opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]"
-    />
-
-    <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-28 w-full">
-      <div className="text-center md:text-left">
-        <p className="font-mono text-amber-400 text-sm mb-5 tracking-[0.18em] uppercase">
-          // hola, soy
-        </p>
-        <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold text-white mb-5 leading-[0.98] tracking-tight text-balance">
-          <span className="block">Miguel</span>
-          <span className="block bg-gradient-to-r from-blue-300 via-blue-400 to-amber-300 bg-clip-text text-transparent">
-            Jiménez.
-          </span>
-        </h1>
-        <p className="text-xl md:text-2xl text-gray-200 mb-3 font-medium">
-          {PROFILE.role}
-          <span className="mx-2 text-blue-500/60">·</span>
-          <span className="text-gray-400 font-normal">Indra</span>
-        </p>
-        <p className="text-base md:text-lg text-gray-400 mb-9 max-w-xl text-pretty leading-relaxed">
-          Llevo más de 5 años construyendo interfaces para sistemas críticos del sector defensa.
-          Angular, React y TypeScript en el día a día.
-        </p>
-
-        <div className="flex gap-3 flex-wrap justify-center md:justify-start">
-          <a
-            href="#projects"
-            className={`px-7 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition-colors duration-200 shadow-lg shadow-blue-500/25 ${FOCUS_RING}`}
-          >
-            Ver proyectos
-          </a>
-          <a
-            href="#contact"
-            className={`px-7 py-3 bg-white/5 hover:bg-white/10 backdrop-blur border border-white/15 text-white font-semibold rounded-lg transition-colors duration-200 ${FOCUS_RING}`}
-          >
-            Hablemos
-          </a>
-        </div>
-
-        <div className="flex gap-5 mt-9 justify-center md:justify-start items-center">
-          <span className="hidden md:inline-block w-12 h-px bg-gray-600" aria-hidden="true" />
-          {SOCIAL_LINKS.map(({ href, label, Icon, external }) => (
-            <a
-              key={label}
-              href={href}
-              aria-label={label}
-              {...(external && { target: '_blank', rel: 'noopener noreferrer' })}
-              className={`text-gray-400 hover:text-white hover:-translate-y-0.5 transition-all duration-200 rounded ${FOCUS_RING}`}
-            >
-              <Icon />
-            </a>
-          ))}
-        </div>
-
-        <blockquote className="mt-10 pl-5 border-l-2 border-amber-400/70 max-w-xl">
-          <p className="text-gray-400 italic text-sm md:text-base text-pretty leading-relaxed">
-            “The most dangerous phrase in the language is ‘We’ve always done it this way’.”
+  <section id="home" className="relative flex min-h-screen items-center overflow-hidden pt-12">
+    <div className="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 md:py-24 lg:px-8">
+      <div className="grid items-center gap-14 lg:grid-cols-12">
+        <div className="lg:col-span-7">
+          <p className="mb-6 font-mono text-xs uppercase tracking-label text-ambar">
+            {'// Canal abierto — transmitiendo desde Aranjuez'}
           </p>
-          <footer className="font-mono text-amber-400/80 text-xs mt-2 not-italic tracking-wider">
-            — Grace Hopper
-          </footer>
-        </blockquote>
+
+          <h1 className="afterglow mb-6 font-display uppercase leading-[1.08] text-hielo text-[clamp(2.3rem,7vw,4.4rem)]">
+            Miguel
+            <br />
+            Jiménez
+          </h1>
+          <div className="rule-ticks mb-8 max-w-md" aria-hidden="true" />
+
+          <dl className="mb-8 grid max-w-xl border border-bisel sm:grid-cols-3 divide-y divide-bisel sm:divide-y-0 sm:divide-x">
+            {READOUTS.map(({ label, value }) => (
+              <div key={label} className="px-4 py-3">
+                <dt className="mb-1 font-mono text-[10px] uppercase tracking-label text-ambar">
+                  {label}
+                </dt>
+                <dd className="text-sm text-hielo">{value}</dd>
+              </div>
+            ))}
+          </dl>
+
+          <p className="mb-9 max-w-xl text-pretty text-base leading-relaxed text-niebla md:text-lg">
+            Llevo más de 5 años desarrollando software para el sector defensa, casi siempre en el
+            frontend y bajando al backend cuando hace falta. Fuera del trabajo, videojuegos por
+            pura afición.
+          </p>
+
+          <div className="flex flex-wrap gap-3">
+            <a
+              href="#projects"
+              className={`rounded-sm bg-fosforo px-6 py-3 font-mono text-[13px] font-semibold uppercase tracking-instrument text-tinta transition hover:brightness-110 ${FOCUS_RING}`}
+            >
+              Ver proyectos ▸
+            </a>
+            <a
+              href="#contact"
+              className={`rounded-sm border border-ambar/70 px-6 py-3 font-mono text-[13px] font-semibold uppercase tracking-instrument text-ambar transition-colors hover:bg-ambar/10 ${FOCUS_RING}`}
+            >
+              Abrir canal
+            </a>
+          </div>
+
+          <ul className="mt-9 flex items-center gap-4" aria-label="Canales directos">
+            {CHANNELS.map(({ href, label, external }, index) => (
+              <li key={label} className="flex items-center gap-4">
+                {index > 0 && (
+                  <span aria-hidden="true" className="h-3 w-px bg-bisel" />
+                )}
+                <a
+                  href={href}
+                  {...(external && { target: '_blank', rel: 'noopener noreferrer' })}
+                  className={`rounded-sm font-mono text-xs uppercase tracking-instrument text-niebla transition-colors hover:text-fosforo ${FOCUS_RING}`}
+                >
+                  {label}
+                  {external && <span className="sr-only"> (se abre en pestaña nueva)</span>}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <blockquote className="mt-12 max-w-xl border-l-2 border-bisel pl-5">
+            <p className="mb-2 font-mono text-[10px] uppercase tracking-label text-ambar">
+              ▸ Transmisión interceptada
+            </p>
+            <p lang="en" className="text-pretty text-sm italic leading-relaxed text-niebla md:text-[15px]">
+              “The most dangerous phrase in the language is ‘We’ve always done it this way’.”
+            </p>
+            <footer className="mt-2 font-mono text-[10px] not-italic tracking-instrument text-niebla">
+              — GRACE HOPPER
+            </footer>
+          </blockquote>
+        </div>
+
+        <div className="lg:col-span-5">
+          <Radar />
+        </div>
       </div>
     </div>
   </section>
