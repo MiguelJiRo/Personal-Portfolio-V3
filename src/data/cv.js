@@ -10,7 +10,7 @@ export const CV_EXPERIENCE = [
     location: 'Aranjuez, España',
     period: 'Enero 2022 - Actualidad',
     description:
-      'Desarrollo del Sistema de Mando y Control Estratégico Europeo (MPCC) para el Servicio Europeo de Acción Exterior (SEAE), la plataforma con la que la Unión Europea coordina sus misiones internacionales.',
+      'Desarrollo frontend de una plataforma web de gran escala para el sector defensa, en un proyecto internacional de larga duración con equipos distribuidos en varios países. Por confidencialidad no se detallan los sistemas concretos.',
     bullets: [
       'Desarrollo componentes de interfaz con Angular y TypeScript aplicando buenas prácticas de accesibilidad (a11y), rendimiento y diseño responsive.',
       'Garantizo la calidad del código con pruebas unitarias y de integración (Jest, Angular Testing Library) siguiendo TDD (Test-Driven Development).',
@@ -25,7 +25,7 @@ export const CV_EXPERIENCE = [
     location: 'Aranjuez, España',
     period: 'Febrero 2021 - Enero 2022',
     description:
-      'Desarrollo backend del sistema de planificación de misiones para los helicópteros del Ejército de Tierra.',
+      'Desarrollo backend de servicios REST para un sistema de gestión de datos del sector defensa.',
     bullets: [
       'Diseño y desarrollo de servicios REST (APIs) con Java y Spring Boot sobre bases de datos PostgreSQL y Oracle.',
       'Implementación de pruebas unitarias y de integración con JUnit y Mockito.',

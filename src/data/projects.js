@@ -24,7 +24,7 @@ export const PROJECTS = [
     title: 'Pixel Defense',
     description:
       'Mi laboratorio de desarrollo de videojuegos: un tower defense retro pintado sobre Canvas 2D, sin motor de por medio. Modo endless con caminos que cambian en cada partida, cuatro tipos de torre, eventos aleatorios y una dificultad que escala sin piedad.',
-    note: 'DEFENSA: TAMBIÉN EN MIS RATOS LIBRES',
+    note: 'TORRETAS, OLEADAS Y CANVAS 2D · SIN MOTOR DE JUEGO',
     image: pixelDefenseImg,
     technologies: ['React', 'Canvas 2D', 'Vite', 'JavaScript'],
     github: 'https://github.com/MiguelJiRo/Pixel-Defense',

@@ -1,6 +1,6 @@
 # Portfolio Personal — Miguel Jiménez Rodríguez
 
-Portfolio personal de una sola página con una dirección de arte propia de **sala de mando / instrumentación aeroespacial**: el mundo real en el que trabajo (sistemas de mando y control) convertido en sistema visual. Los tres proyectos personales aparecen como contactos en un radar CSS puro en el hero.
+Portfolio personal de una sola página con una dirección de arte propia de **sala de mando / instrumentación aeroespacial**. Los proyectos personales aparecen como contactos en un radar CSS puro en el hero.
 
 ## Tecnologías
 

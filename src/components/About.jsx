@@ -8,14 +8,9 @@ const FOCUS_RING =
   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fosforo focus-visible:ring-offset-2 focus-visible:ring-offset-hangar';
 
 const SERVICE_RECORD = [
-  { label: 'Alta', value: 'Feb 2021' },
-  { label: 'Destino actual', value: 'Frontend · Mando y control' },
-  { label: 'Destino anterior', value: 'Backend · Planif. de misiones' },
-];
-
-const WAYPOINTS = [
-  { period: 'FEB 2021', detail: 'BACKEND · JAVA / SPRING' },
-  { period: 'ENE 2022', detail: 'FRONTEND / FULLSTACK · ANGULAR / REACT' },
+  { label: 'Experiencia', value: '+5 años' },
+  { label: 'Puesto', value: 'Frontend / Fullstack' },
+  { label: 'Stack', value: 'Angular · TypeScript · React' },
 ];
 
 const About = () => (
@@ -38,37 +33,25 @@ const About = () => (
 
           <div className="max-w-[65ch] space-y-5 text-pretty text-[17px] leading-[1.7] text-niebla">
             <p>
-              Entré en Indra en 2021 picando Java para un sistema de planificación de misiones de
-              helicópteros del Ejército de Tierra. Un año después crucé al frontend y desde
-              entonces trabajo en el sistema de mando y control con el que la Unión Europea
-              coordina sus misiones internacionales — un proyecto grande, exigente y con equipos
-              de varios países empujando el mismo código.
+              Soy desarrollador frontend en Indra, donde trabajo en proyectos del sector defensa.
+              Mi día a día gira en torno a Angular y TypeScript, construyendo interfaces en las que
+              la accesibilidad y el rendimiento se cuidan desde el primer momento, no cuando ya hay
+              prisa. Me apoyo mucho en las pruebas —Jest y Angular Testing Library, a veces antes
+              que el propio código— y, como vengo del backend, tampoco me asusta cruzar a Java y
+              Spring Boot cuando la tarea lo pide. Además, en sistemas donde nuestra parte tiene
+              que encajar con las de otras empresas, aprendes a escribir código claro, revisado y
+              pensado para durar.
             </p>
             <p>
-              Mi terreno es Angular, React y TypeScript, y cuando hay que bajar a Java y Spring
-              para entender qué está pasando, bajo. El testing me lo tomo en serio: escribo
-              pruebas porque en un sistema que usan personas de verdad, un «funciona en mi
-              máquina» no vale.
-            </p>
-            <p>
-              Cuando cierro el portátil del trabajo, cambio de escala: hago videojuegos y apps
-              pequeñas por puro gusto. Un tower defense de píxeles, un Wordle de tecnologías, un
-              buscador de anime por capturas. Nada de eso es crítico — y justo por eso me sirve:
-              ahí pruebo lo que en un sistema de defensa no tocaría ni de broma.
+              Fuera del trabajo sigo programando, aunque con otro espíritu: ahí es donde me suelto
+              con React y de donde salen los proyectos que tienes justo debajo, con demo y código
+              abiertos por si quieres trastear. Casi todos nacen de una curiosidad concreta, como
+              entender cómo se dibuja un juego sobre un canvas, y últimamente también le dedico
+              ratos a Godot, que los videojuegos me tiran desde siempre. Soy ingeniero informático
+              de formación, pasé por el Máster Frontend de Lemoncode y sigo cayendo en algún curso
+              cuando un tema me llama.
             </p>
           </div>
-
-          <ul className="mt-10 space-y-4 border-l border-bisel pl-6" aria-label="Trayectoria en Indra">
-            {WAYPOINTS.map(({ period, detail }) => (
-              <li key={period} className="relative font-mono text-[11px] tracking-instrument text-niebla">
-                <span
-                  aria-hidden="true"
-                  className="absolute -left-[29px] top-1 h-1.5 w-1.5 rotate-45 border border-fosforo/70 bg-hangar"
-                />
-                <span className="text-fosforo">{period}</span> — {detail}
-              </li>
-            ))}
-          </ul>
 
           <div className="mt-10 flex flex-wrap gap-3">
             <a

@@ -4,7 +4,7 @@ export const PROFILE = {
   role: 'Frontend Developer',
   location: 'Aranjuez, España',
   coordinates: '40.03°N 3.60°O',
-  availability: 'En Indra, pero escucho propuestas',
+  availability: 'Abierto a escuchar propuestas',
   statusLabel: 'En escucha',
   // Alta en Indra: febrero de 2021 (dato real del CV, alimenta el reloj de misión T+)
   serviceStart: '2021-02-01',

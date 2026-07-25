@@ -15,8 +15,8 @@ const Projects = () => (
         Cuatro contactos en pantalla — desarrollos personales
       </p>
       <p className="mb-14 max-w-3xl text-pretty text-lg text-niebla">
-        El trabajo del día a día no se puede enseñar aquí, así que esto es lo que hago por mi
-        cuenta: sin tickets, sin requisitos y con total libertad para equivocarme.
+        Aquí solo hay desarrollos propios: sin tickets, sin requisitos y con total libertad para
+        equivocarme.
       </p>
 
       <div className="grid gap-6 md:grid-cols-2 lg:gap-8">
